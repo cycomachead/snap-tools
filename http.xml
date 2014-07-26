@@ -1,0 +1,69 @@
+<blocks app="Snap! 4.0, http://snap.berkeley.edu" version="1">
+    <block-definition s="%'PROTO' %'url' as a %'VERB' with headers %'headers'" type="reporter" category="sensing">
+        <comment w="128" collapsed="false">Better comments TODO&#xD;Headers are 2 item lists of the form Key : Value</comment>
+        <header/>
+        <code/>
+        <inputs>
+            <input type="%s" readonly="true">http://
+<options>http://
+https://</options>
+            </input>
+            <input type="%txt">snap.berkeley.edu</input>
+            <input type="%s" readonly="true">GET<options>GET
+POST
+PUT
+PATCH
+DELETE</options></input>
+            <input type="%mult%l"/>
+        </inputs>
+        <script>
+            <block s="doDeclareVariables">
+                <list>
+                    <l>xhr</l>
+                </list>
+                <comment w="90" collapsed="false">TODO: JSONP type stuff and possibly carrying over auth</comment>
+            </block>
+            <block s="doSetVar">
+                <l>xhr</l>
+                <block s="reportJSFunction">
+                    <list>
+                        <l>url</l>
+                        <l>verb</l>
+                        <l>headers</l>
+                    </list>
+                    <l>
+                        console.log(verb);
+                        console.log(headers);
+                        var xhr = new XMLHttpRequest();
+                        // Note: Snap XHRs should by SYNC!
+                        xhr.open(verb, url, false);
+                        xhr.send();
+                        if (xhr.readyState === 4) { 
+                          if (xhr.status === 200) {
+                            return xhr.responseText;
+                          } else {
+                            console.error(xhr.statusText);
+                          }
+                          return 'status';
+                        }
+                    </l>
+                </block>
+            </block>
+            <block s="doReport">
+                <block s="evaluate">
+                    <block var="xhr"/>
+                    <list>
+                        <block s="reportJoinWords">
+                            <list>
+                                <block var="PROTO"/>
+                                <block var="url"/>
+                            </list>
+                        </block>
+                        <block var="VERB"/>
+                        <block var="headers"/>
+                    </list>
+                </block>
+            </block>
+        </script>
+    </block-definition>
+</blocks>
