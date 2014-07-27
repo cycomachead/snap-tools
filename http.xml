@@ -4,8 +4,7 @@
         <header/>
         <code/>
         <inputs>
-            <input type="%s" readonly="true">http://
-<options>http://
+            <input type="%s" readonly="true">http://<options>http://
 https://</options>
             </input>
             <input type="%txt">snap.berkeley.edu</input>
@@ -32,20 +31,25 @@ DELETE</options></input>
                         <l>headers</l>
                     </list>
                     <l>
-                        console.log(verb);
-                        console.log(headers);
-                        var xhr = new XMLHttpRequest();
-                        // Note: Snap XHRs should by SYNC!
-                        xhr.open(verb, url, false);
-                        xhr.send();
-                        if (xhr.readyState === 4) { 
-                          if (xhr.status === 200) {
-                            return xhr.responseText;
-                          } else {
-                            console.error(xhr.statusText);
-                          }
-                          return 'status';
-                        }
+var xhr = new XMLHttpRequest();
+xhr.open(verb, url, false);
+var i;
+for(i = 1; i &lt;= headers.length(); i += 1) {
+    var item = headers.at(i);
+    if (item.length() == 2) {
+        xhr.setRequestHeader(item.at(1), item.at(2));
+    }
+};
+xhr.send();
+if (xhr.readyState === 4) { 
+  if (xhr.status === 200) {
+    return xhr.responseText;
+  } else {
+    console.error(xhr.statusText);
+    return 'ERROR';
+  }
+}
+return 'uh oh';
                     </l>
                 </block>
             </block>
