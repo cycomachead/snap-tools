@@ -1,0 +1,3 @@
+[submodule "bjc.py"]
+	path = bjc.py
+	url = gh:cs10/bjc.py
