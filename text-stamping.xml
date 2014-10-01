@@ -19,7 +19,6 @@
                             rotation = radians(this.direction() - 90),
                             trans    = new Point(this.center().x - stage.left(),
                                                  this.center().y - stage.top()),
-                            ide      = this.parentThatIsA(IDE_Morph),
                             isWarped = this.isWarped,
                             len, pos;
 
