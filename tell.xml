@@ -1,0 +1,19 @@
+<blocks app="Snap! 4.0, http://snap.berkeley.edu" version="1">
+    <block-definition s="tell %'spr' to do %'command'" type="command" category="control">
+        <header/>
+        <code/>
+        <inputs>
+            <input type="%spr"/>
+            <input type="%cs"/>
+        </inputs>
+        <script>
+            <block s="doRun">
+                <block s="reportAttributeOf">
+                    <block var="command"/>
+                    <block var="spr"/>
+                </block>
+                <list/>
+            </block>
+        </script>
+    </block-definition>
+</blocks>
