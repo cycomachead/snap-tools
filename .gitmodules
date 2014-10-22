@@ -1,3 +1,6 @@
 [submodule "bjc.py"]
 	path = bjc.py
-	url = gh:cs10/bjc.py
+	url = git://github.com/cs10/bjc.py
+[submodule "snap"]
+	path = snap
+	url = git://github.com/jmoenig/Snap--Build-Your-Own-Blocks.git
