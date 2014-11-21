@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Snap! Build Your Own Blocks. Beta</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Snap! Build Your Own Blocks. Beta</title>
         <link rel="shortcut icon" href="http://snap.berkeley.edu/fav3.gif" type="image/gif">
-		<script type="text/javascript" src="morphic.js"></script>
-		<script type="text/javascript" src="widgets.js"></script>
-		<script type="text/javascript" src="blocks.js"></script>
-		<script type="text/javascript" src="threads.js"></script>
-		<script type="text/javascript" src="objects.js"></script>
-		<script type="text/javascript" src="gui.js"></script>
-		<script type="text/javascript" src="paint.js"></script>
-		<script type="text/javascript" src="lists.js"></script>
-		<script type="text/javascript" src="byob.js"></script>
-		<script type="text/javascript" src="xml.js"></script>
-		<script type="text/javascript" src="store.js"></script>
-		<script type="text/javascript" src="locale.js"></script>
-		<script type="text/javascript" src="cloud.js"></script>
-		<script type="text/javascript" src="sha512.js"></script>
-		<script type="text/javascript">
-			var world;
-			window.onload = function () {
-				world = new WorldMorph(document.getElementById('world'));
+        <script type="text/javascript" src="snap/morphic.js"></script>
+        <script type="text/javascript" src="snap/widgets.js"></script>
+        <script type="text/javascript" src="snap/blocks.js"></script>
+        <script type="text/javascript" src="snap/threads.js"></script>
+        <script type="text/javascript" src="snap/objects.js"></script>
+        <script type="text/javascript" src="snap/gui.js"></script>
+        <script type="text/javascript" src="snap/paint.js"></script>
+        <script type="text/javascript" src="snap/lists.js"></script>
+        <script type="text/javascript" src="snap/byob.js"></script>
+        <script type="text/javascript" src="snap/xml.js"></script>
+        <script type="text/javascript" src="snap/store.js"></script>
+        <script type="text/javascript" src="snap/locale.js"></script>
+        <script type="text/javascript" src="snap/cloud.js"></script>
+        <script type="text/javascript" src="snap/sha512.js"></script>
+        <script type="text/javascript">
+            var world;
+            window.onload = function () {
+                world = new WorldMorph(document.getElementById('world'));
                 world.worldCanvas.focus();
-				new IDE_Morph().openIn(world);
-				setInterval(loop, 1);
-			};
-			function loop() {
-				world.doOneCycle();
-			}
-		</script>
-	</head>
-	<body style="margin: 0;">
-		<canvas id="world" tabindex="1" style="position: absolute;" />
+                new IDE_Morph(false).openIn(world);
+                setInterval(loop, 1);
+            };
+            function loop() {
+                world.doOneCycle();
+            }
+        </script>
+        <script type="text/javascript">
+
+        </script>
+
+    </head>
+    <body style="margin: 0;">
+        <canvas id="world" tabindex="1" style="position: absolute; width: 45%; height: 90%" />
+        <div id="output" style='width: 45% height: 90%'>
+            Hello!
+        </div>
+        <br />
+        <button id="codify">Translate Me!</button>
     </body>
 </html>
