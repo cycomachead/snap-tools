@@ -35,8 +35,8 @@ function getProject(url, filename) {
 
 
     function handleError(e) {
-          console.error('ERROR:\n\t' + e);
-          process.exit(1);
+        console.error('ERROR:\n\t' + e);
+        process.exit(1);
     }
 
     // Take in an encoded cloud response and write the file
@@ -50,9 +50,8 @@ function getProject(url, filename) {
         data = data.split('&');
         // Response Sections
         // ProjectName=X&Updated=X&SourceCode=X
-        // TODO: Clean all this up with a map()
-        console.log(data.length);
-        console.log(data);
+        // TODO: Clean all this up with a map() or a qs.parse
+        // console.log(data.length);
         cloudProj = (data[0] || '').split('='); // ProjectName=X
         cloudDate = (data[1] || '').split('='); // Updated=X
         cloudData = (data[2] || '').split('='); // SourceCode=X
@@ -62,6 +61,7 @@ function getProject(url, filename) {
         filename = filename || (user + '__' + cloudProj + '__' + cloudDate);
         filename += '.xml';
         fs.writeFileSync(filename, cloudData);
+        console.log('Finished writing: ', filename);
     }
 
     function processData(response) {
